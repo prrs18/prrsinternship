@@ -15,6 +15,8 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
+                // Ensure Composer is available
+                sh 'which composer || { curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; }'
                 // Install Composer dependencies
                 sh 'composer install'
             }
