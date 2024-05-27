@@ -13,10 +13,22 @@ pipeline {
             }
         }
 
+        stage('Install Composer') {
+            steps {
+                // Check if Composer is installed, if not, install it
+                sh '''
+                if ! [ -x "$(command -v composer)" ]; then
+                    echo "Installing Composer..."
+                    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+                else
+                    echo "Composer is already installed"
+                fi
+                '''
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
-                // Ensure Composer is available
-                sh 'which composer || { curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; }'
                 // Install Composer dependencies
                 sh 'composer install'
             }
