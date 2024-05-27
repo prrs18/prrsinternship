@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clone the repository
-                git url: 'https://github.com/your-repo/your-php-project.git', branch: 'main'
+                git url: 'https://github.com/prrs18/prrsinternship.git', branch: 'main'
             }
         }
 
@@ -37,7 +37,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Deploy the application
-                // This is just a placeholder, replace with actual deployment steps
+                // Placeholder for actual deployment steps
                 sh 'echo "Deploying application..."'
             }
         }
@@ -60,4 +60,3 @@ pipeline {
         }
     }
 }
-
